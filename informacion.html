@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Información - Radio</title>
+  <style>
+    :root{
+      --blue:#0b63d6;
+      --black:#0b0b0b;
+      --white:#ffffff;
+      --muted:#f4f6f8;
+      --radius:12px;
+      --max-width:1080px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,var(--white),var(--muted));
+      color:var(--black);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:24px 12px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+    }
+    .container{
+      width:100%;
+      max-width:var(--max-width);
+      background:var(--white);
+      border-radius:18px;
+      box-shadow:0 10px 30px rgba(11,12,13,0.08);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    }
+
+    /* Header */
+    header{
+      padding:20px;
+      display:flex;
+      flex-direction:row;
+      align-items:center;
+      gap:16px;
+      border-bottom:1px solid #e9eef3;
+      background:linear-gradient(90deg,var(--white),#f8fbff);
+      width:100%;
+    }
+    .logo{
+      width:100px;
+      height:100px;
+      flex-shrink:0;
+      border-radius:14px;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--blue);
+      box-shadow:0 6px 18px rgba(11,99,214,0.12);
+    }
+    .logo img{width:100%;height:100%;object-fit:cover;display:block}
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      align-items:flex-start;
+    }
+    .brand .name{
+      font-weight:800;
+      font-size:1.8rem; /* Título más grande */
+      color:var(--black);
+    }
+    .brand .tag{
+      font-size:0.95rem;
+      color:rgba(11,12,13,0.6);
+    }
+
+    /* Main content */
+    main{
+      padding:22px;
+      display:grid;
+      gap:20px;
+      width:100%;
+    }
+
+    h1{
+      margin:0 0 6px 0;
+      font-size:2.6rem; /* Agrandado */
+      color:var(--blue);
+      letter-spacing:0.2px;
+      font-weight:900;
+      text-align:center;
+    }
+    p.lead{
+      margin:0;
+      color:var(--black);
+      opacity:0.9;
+      text-align:center;
+    }
+
+    .card{
+      background:linear-gradient(180deg,var(--white),#fbfeff);
+      border-radius:14px;
+      padding:20px;
+      box-shadow:0 6px 16px rgba(11,12,13,0.04);
+      text-align:justify;
+    }
+
+    .about-text{
+      line-height:1.6;
+      margin-top:15px;
+      color:#222;
+      font-weight:700; /* Todo el texto en negritas */
+      background:#f0f6ff; /* Fondo suave */
+      padding:16px;
+      border-radius:12px;
+    }
+
+    .map-container{
+      width:100%;
+      height:450px;
+      padding:20px;
+    }
+    .map-container iframe{
+      width:100%;
+      height:100%;
+      border:0;
+      border-radius:18px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    footer{
+      padding:18px 22px;
+      border-top:1px solid #eef4fb;
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      align-items:center;
+      flex-wrap:wrap;
+      width:100%;
+    }
+
+    .contact-links{display:flex;gap:10px;align-items:center}
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:600;
+      border:1px solid rgba(11,12,13,0.06);
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="document">
+    <header>
+      <div class="logo" aria-hidden="true">
+        <img src="https://i.postimg.cc/t4kFpMvb/ddd.png" alt="Logo de la radio">
+      </div>
+      <div class="brand">
+        <div class="name">Radio Emisión Cristiana</div>
+        <div class="tag">la radio que te conecta con Dios</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="card" aria-labelledby="info-title">
+        <h1 id="info-title">Información sobre nosotros</h1>
+        <p class="lead">Bienvenido a la página informativa de nuestra radio.</p>
+        <div class="about-text">
+          <p>¡Bienvenidos a <strong>Radio Emisión Cristiana</strong>! Somos una radio online dedicada a compartir mensajes de esperanza, fe y amor a través de la música y la palabra de Dios. Nuestro objetivo es crear un espacio donde todos puedan conectarse con su espiritualidad y encontrar inspiración en su día a día.</p>
+
+          <p>En Radio Emisión Cristiana, ofrecemos una variada programación que incluye música cristiana contemporánea, programas de reflexión, estudios bíblicos y entrevistas con líderes y miembros de la comunidad. Creemos en el poder del evangelio para transformar vidas y en la importancia de compartir testimonios que fortalezcan la fe.</p>
+
+          <p>Nos apasiona servir a nuestra audiencia y fomentar un sentido de comunidad entre nuestros oyentes. Te invitamos a sintonizarnos y ser parte de esta hermosa misión. ¡Juntos, podemos hacer una diferencia!</p>
+
+          <p>Nuestra emisora de radio online ofrece un espacio para la familia, promoviendo valores cristianos y apoyando el crecimiento espiritual de cada oyente.</p>
+        </div>
+      </section>
+
+      <section class="map-container">
+        <h2 style="text-align:center; color:var(--blue); font-size:1.8rem; margin-bottom:12px;">Nuestra ubicación</h2>
+        <iframe src="https://www.google.com/maps?q=Calle+Mella+%2325,+Santo+Domingo+Este,+República+Dominicana&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </section>
+    </main>
+
+    <footer>
+      <small>© <span id="year"></span> </small>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
