@@ -21,14 +21,59 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 }
+
+/* Quitar outlines de todos los elementos interactivos */
+*,
+*:focus,
+*:active,
+*:focus-visible,
+*:focus-within,
+*::before,
+*::after {
+ outline: none !important;
+ -webkit-tap-highlight-color: transparent !important;
+}
+
+button,
+button:focus,
+button:active,
+button:hover,
+input,
+input:focus,
+input:active,
+input:hover,
+a,
+a:focus,
+a:active,
+a:hover,
+div:focus,
+div:active,
+.music,
+.music:focus,
+.music:active,
+.list-btn,
+.list-btn:focus,
+.list-btn:active,
+.progress-bar,
+.progress-bar:focus,
+.progress-bar:active,
+i,
+i:focus,
+i:active {
+ outline: none !important;
+ box-shadow: none !important;
+ -webkit-appearance: none !important;
+ -webkit-tap-highlight-color: transparent !important;
+}
 body {
 font-family: 'Open Sans', sans-serif;
 font-size:1rem;
-background:#000;
+background:var(--white);
 }
 body.dark {
  --white:#000;
  --grey:#FFF;
+ background:#000;
 }
 a,a:hover {
 text-decoration:none;
@@ -57,9 +102,43 @@ p{
 }
 button{
  display:inline-block;
- outline:none;
+ outline:none !important;
  border:none;
  background:transparent;
+ -webkit-tap-highlight-color: transparent !important;
+}
+
+/* Reglas específicas para elementos del reproductor */
+.players button,
+.list-btn,
+.back-btn,
+.dark-mode-btn,
+.prevBtn,
+.nextBtn,
+.play-pause-btn {
+ outline: none !important;
+ border: none !important;
+ box-shadow: none !important;
+ -webkit-tap-highlight-color: transparent !important;
+}
+
+/* Eliminar outlines de inputs de rango */
+input[type="range"],
+input[type="range"]:focus,
+input[type="range"]:active,
+.progress-bar,
+.progress-bar:focus,
+.progress-bar:active {
+ outline: none !important;
+ box-shadow: none !important;
+}
+
+/* Eliminar outlines de elementos de lista */
+.music,
+.music:focus,
+.music:active,
+.music:hover {
+ outline: none !important;
 }
 .sec-1 {
  padding:20px;
@@ -115,8 +194,63 @@ button{
 body.dark .header button {
  background:#FFF;
 }
+.search-container {
+ position: relative;
+ margin: 10px;
+ margin-bottom: 15px;
+}
+
+.search-container input {
+ width: 100%;
+ padding: 12px 45px 12px 15px;
+ border: 2px solid #dedede;
+ border-radius: 25px;
+ font-size: 16px;
+ background: var(--white);
+ color: var(--grey);
+ outline: none;
+ transition: border-color 0.3s ease;
+}
+
+.search-container input:focus {
+ border-color: var(--primary);
+}
+
+.search-container .search-icon {
+ position: absolute;
+ right: 15px;
+ top: 50%;
+ transform: translateY(-50%);
+ color: #999;
+ pointer-events: none;
+}
+
+body.dark .search-container input {
+ background: var(--white);
+ color: var(--grey);
+ border-color: #444;
+}
+
+body.dark .search-container input:focus {
+ border-color: var(--primary);
+}
+
 .music-list {
  padding-bottom:70px;
+}
+
+#no-results-message {
+ background: var(--white);
+ color: var(--grey);
+ text-align: center;
+ padding: 20px;
+ font-style: italic;
+ opacity: 0.7;
+}
+
+body.dark #no-results-message {
+ background: var(--white);
+ color: var(--grey);
 }
 .music {
  padding:10px 10px;
@@ -222,7 +356,7 @@ body.dark .header button {
  height:60px;
  width:60px;
  overflow:hidden;
- border-radius:4px;
+ border-radius:50%;
 }
 .players.active .thumbnail{
  width:220px;
@@ -233,6 +367,18 @@ body.dark .header button {
  box-shadow:0 4px 10px rgba(0,0,0,0.2);
 }
 
+/* Animación rotativa para mini reproductor */
+.thumbnail.spin {
+ animation:spin 4s linear infinite;
+}
+.thumbnail.spin:hover {
+ animation-play-state:paused;
+ transition:200ms;
+}
+.thumbnail.spin.pause {
+ animation-play-state:paused;
+}
+/* Animación rotativa para reproductor en pantalla completa */
 .players.active .thumbnail.spin {
  box-shadow: none;
  animation:spin 4s linear infinite;
@@ -360,7 +506,7 @@ body.dark .players .material-icons.active  {
     position: absolute;
     z-index: 4;
     height: 10px;
-    background: #CCC;
+    background: linear-gradient(to right, var(--primary) 0%, var(--primary) 0%, #CCC 0%, #CCC 100%);
     width: 100%;
     border-radius: 30px;
     top:-10px;
@@ -407,54 +553,18 @@ body.dark .players .material-icons.active  {
 </style>
 </head>
 <body>
-<section class="sec sec-1" id="sec-1">
-  <div>
-   <svg id="Capa_1" enable-background="new 0 0 512 512" height="350" viewBox="0 0 512 512" width="300" xmlns=""><g><g></g></svg>
 
-
-<div>
-
-
-
-<style> h2{ color: #FFF; font-family: Arial, Helvetica, sans-serif; border-radius: 5px; margin:1px; } 
-
-div .jordan{ margin:2px; border-radius: 20px; 
-
-display:adsolute;
-position:responsive; 
-
-
-
-{
-</style>
-
-
-
- <center>
- 
-
-<div class="jordan" >   <img class=jordan src="https://i.postimg.cc/gjHnMTwW/Dise-o-sin-t-tulo-2.gif"100%"
-max-width:520px;></a>
-
-</center>
-  
-
-
-<h1>SOLO <span>ADORACIÓN</span></h1>
- 
-RADIO EMISIÓN CRISTIANA</p>
-<button onclick="showMusicList()">Comenzar</button>
-  </div>
-  
-  
-  
-</section>
-<section class="sec sec-2 hide" id="sec-2">
+<section class="sec sec-2" id="sec-2">
 
 <header class="header">
 
  <h3>SOLO ADORACIÓN</h3>
 </header>
+
+ <div class="search-container">
+  <input type="text" id="search-input" placeholder="Buscar música..." autocomplete="off">
+  <i class="material-icons search-icon">search</i>
+ </div>
 
  <div class="music-list" id="music-list">
  </div>
@@ -1025,12 +1135,17 @@ const playMusic = async (i) => {
   audio.src = data.src;
   await audio.load();
   audio.play();
+  // Iniciar animación rotativa automáticamente
+  document.querySelector(".thumbnail").classList.add("spin");
+  setEqualizer();
 }
  
  const playPause = e => {
     if(audio.paused) {
     playBtn.textContent = "pause";
     audio.play();
+    // Iniciar animación rotativa al reproducir
+    document.querySelector(".thumbnail").classList.add("spin");
     setEqualizer()
    } else{
    playBtn.textContent = "play_arrow";
@@ -1081,9 +1196,16 @@ const playMusic = async (i) => {
  const ds = parseInt(audio.duration % 60)
  const dm = parseInt((audio.duration / 60) % 60)
  ttview.textContent = dm + ':' + ds;
+ // Inicializar gradiente de la barra de progreso al 0%
+ progress.style.background = `linear-gradient(to right, var(--primary) 0%, var(--primary) 0%, #CCC 0%, #CCC 100%)`;
  }
  audio.ontimeupdate =  () =>  { 
-   progress.value = audio.currentTime 
+   progress.value = audio.currentTime;
+   // Actualizar gradiente de la barra de progreso
+   if (audio.duration) {
+     const percentage = (audio.currentTime / audio.duration) * 100;
+     progress.style.background = `linear-gradient(to right, var(--primary) 0%, var(--primary) ${percentage}%, #CCC ${percentage}%, #CCC 100%)`;
+   }
  }
  audio.addEventListener('timeupdate', () => {
 
@@ -1094,6 +1216,11 @@ const playMusic = async (i) => {
  
  const changeProgressBar = () => { 
    audio.currentTime = progress.value;
+   // Actualizar gradiente de la barra de progreso
+   if (audio.duration) {
+     const percentage = (progress.value / audio.duration) * 100;
+     progress.style.background = `linear-gradient(to right, var(--primary) 0%, var(--primary) ${percentage}%, #CCC ${percentage}%, #CCC 100%)`;
+   }
  }
  
 
@@ -1129,11 +1256,67 @@ const playMusic = async (i) => {
  const setMusicList =  () => {
   songs.forEach(song => addList(song));
  }
+
+ // Función para filtrar canciones
+ const filterSongs = (searchTerm) => {
+   const musicElements = document.querySelectorAll('.music');
+   let visibleCount = 0;
+   
+   musicElements.forEach(element => {
+     const title = element.querySelector('.list-content h3').textContent.toLowerCase();
+     const category = element.querySelector('.list-content small').textContent.toLowerCase();
+     const searchTermLower = searchTerm.toLowerCase().trim();
+     
+     if (searchTermLower === '' || title.includes(searchTermLower) || category.includes(searchTermLower)) {
+       element.style.display = 'flex';
+       visibleCount++;
+     } else {
+       element.style.display = 'none';
+     }
+   });
+   
+   // Mostrar mensaje si no hay resultados
+   let noResultsMsg = document.getElementById('no-results-message');
+   if (visibleCount === 0 && searchTerm.trim() !== '') {
+     if (!noResultsMsg) {
+       noResultsMsg = document.createElement('div');
+       noResultsMsg.id = 'no-results-message';
+       noResultsMsg.innerHTML = '<p>No se encontraron canciones que coincidan con tu búsqueda</p>';
+       musicList.appendChild(noResultsMsg);
+     }
+     noResultsMsg.style.display = 'block';
+   } else {
+     if (noResultsMsg) {
+       noResultsMsg.style.display = 'none';
+     }
+   }
+ }
+
+ // Configurar el buscador
+ const searchInput = document.getElementById('search-input');
+ if (searchInput) {
+   searchInput.addEventListener('input', (e) => {
+     filterSongs(e.target.value);
+   });
+   
+   // Limpiar búsqueda con Escape
+   searchInput.addEventListener('keydown', (e) => {
+     if (e.key === 'Escape') {
+       searchInput.value = '';
+       filterSongs('');
+     }
+   });
+ }
  
  const FirstSetUp = () => {
   audio.src = musicData[index -1].src;
   setData(musicData[index -1]);
   setMusicList();
+  // Configurar el buscador después de cargar la lista
+  const searchInput = document.getElementById('search-input');
+  if (searchInput) {
+    searchInput.value = '';  // Limpiar búsqueda anterior
+  }
  }
  FirstSetUp()
  
@@ -1142,14 +1325,24 @@ const playMusic = async (i) => {
   while(musicList.hasChildNodes()){
     musicList.removeChild(musicList.firstChild);
   }
-  setMusicList()
+  setMusicList();
+  // Limpiar búsqueda cuando se filtra por categoría
+  const searchInput = document.getElementById('search-input');
+  if (searchInput) {
+    searchInput.value = '';
+  }
  }
  const filterAll = () => {
   songs = musicData;
   while(musicList.hasChildNodes()){
     musicList.removeChild(musicList.firstChild);
   }
-  setMusicList()
+  setMusicList();
+  // Limpiar búsqueda cuando se muestra todo
+  const searchInput = document.getElementById('search-input');
+  if (searchInput) {
+    searchInput.value = '';
+  }
  }
 function setEqualizer(action = false){
  const elc = musicList.getElementsByClassName("equalize")[index-1];
@@ -1160,6 +1353,11 @@ function setEqualizer(action = false){
   if(action) {
    elc.classList.add("pause")
   }
+ }
+ // Manejar animación rotativa automáticamente
+ if(!audio.paused && !thumb.classList.contains("spin")){
+  // Si está reproduciéndose pero no tiene spin, agregarlo
+  thumb.classList.add("spin");
  }
  if(thumb.classList.contains("spin") && audio.paused && action){
   thumb.classList.add("pause");
